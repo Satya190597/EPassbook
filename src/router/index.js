@@ -1,21 +1,26 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import ManageTransaction from '../components/ManageTransaction'
-import TransactionList from '../pages/TransactionsList'
+import Manipulate from '../pages/Manipulate'
+import Add from '../pages/Add'
+import Reset from '../pages/Reset'
 
 Vue.use(VueRouter)
 
   const routes = [
   {
     path: '/',
-    name: 'ManageTransaction',
-    component: ManageTransaction
+    name: 'Reset',
+    component: Reset
   },
   {
-    path: '/transactions',
-    name: 'Transactions',
-    component: TransactionList
+    path: '/transaction/new',
+    name: 'NewTransaction',
+    component: Add
+  },
+  {
+    path: '/transactions/edit',
+    name: 'EditTransaction',
+    component: Manipulate
   },
 ]
 
