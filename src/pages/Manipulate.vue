@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h1>Transaction List</h1>
         <Transactions  />
     </div>
 </template>
@@ -11,10 +10,5 @@ export default {
     components: {
         Transactions: Transactions
     },
-    data: function() {
-        return {
-            transactionList: this.$store.getters.transactions
-        }
-    }
 }
 </script>

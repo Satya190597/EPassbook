@@ -1,10 +1,13 @@
 <template>
   <div id="app">
-    <Header/>
-    <router-view/>
-    <Footer/>
+    <v-app>
+      <Header/>
+      <router-view class="mt-md-10"></router-view>
+      <Footer/>
+    </v-app>
   </div>
 </template>
+
 <script>
 import Header from './layouts/Header'
 import Footer from './layouts/Footer'
@@ -13,6 +16,10 @@ export default {
   components: {
     Header: Header,
     Footer: Footer
-  }
-}
+  },
+};
 </script>
+<style  scoped>
+
+</style>
+
