@@ -2,7 +2,9 @@
     <v-card
     max-width="90%"
     class="mx-auto">
-        <v-simple-table v-if="isDataExist()">
+        <v-simple-table 
+        height=300
+        v-if="isDataExist()">
             <template v-slot:default>
                 <thead>
                     <tr>
@@ -19,9 +21,21 @@
                         <td>{{element.id}}</td>
                         <td>{{element.name}}</td>
                         <td>{{element.date | formatDate}}</td>
-                        <td>{{element.category}}</td>
-                        <td>{{element.amount}}</td>
-                        <td><v-btn v-if="element.active" @click="cancleTransaction(element)">Cancel Transaction</v-btn></td>
+                        <td v-fontDecorator="element.category">{{element.category}}</td>
+                        <td v-fontDecorator="element.category">{{element.amount}}</td>
+                        <td>
+                            <v-btn 
+                            text 
+                            color="error"
+                            v-if="element.active" @click="cancleTransaction(element)">
+                                Cancel Transaction
+                            </v-btn>
+                            <v-btn
+                            text
+                            v-if="!element.active">
+                                Canceled
+                            </v-btn>
+                        </td>
                     </tr>
                     <tr>
                         <td colspan="5">
@@ -51,6 +65,13 @@ export default {
     data: function() {
         return {
             transactions: this.$store.getters.transactions
+        }
+    },
+    directives: {
+        fontDecorator: {
+            inserted: function(el,binding) {
+                binding.value === 'Debit' ? el.style.color = 'red' : el.style.color = 'green' 
+            }
         }
     },
     methods: {

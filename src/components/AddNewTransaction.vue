@@ -6,16 +6,22 @@
         class="font-weight-medium">
            Add A New Transaction
         </v-card-title>
-        <v-form>
+        <v-form
+        ref="form">
             <v-text-field 
             type="text" 
+            label="Beneficiary name"
+            :rules="nameRule"        
             v-model="transaction.name">
             </v-text-field>
             <v-text-field 
             type="number" 
+            label="Amount"
+            :rules="amountRule"
             v-model="transaction.amount">
             </v-text-field>
             <v-select
+            label="Transaction Type"
             v-model="transaction.category"
             v-bind:items="categories">
             </v-select>
@@ -36,13 +42,25 @@ export default {
                 category: 'Credit',
                 active: true
             },
-            categories : ['Credit','Debit']
+            categories : ['Credit','Debit'],            
         }
     },
+    computed: {
+        nameRule: function() {
+            return [v => !!v || 'Name is required']
+        },
+        amountRule: function() {
+            return [v => v > 0 || 'Amount must be greather then zero']
+        } 
+    },
     methods : {
-        addTransaction: function() {     
-            this.$store.dispatch('add',this.transaction) 
-            this.reset()         
+        addTransaction: function() {    
+            if(this.$refs.form.validate())
+            {
+                this.$store.dispatch('add',this.transaction)
+                this.reset()
+                this.$refs.form.resetValidation()
+            }         
         },
         reset: function() {
             this.transaction = {
