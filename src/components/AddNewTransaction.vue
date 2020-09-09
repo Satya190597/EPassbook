@@ -33,8 +33,7 @@
         <!-- SNACKBAR -->
         <v-snackbar
         color="primary"
-        v-model="snackbar"
-        :timeout="timeout">
+        v-model="snackbar">
             {{ text }}
             <template v-slot:action="{ attrs }">
                 <v-btn
