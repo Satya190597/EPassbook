@@ -8,18 +8,21 @@
         </v-card-title>
         <v-form
         ref="form">
+            <!-- BENEFICIARY NAME -->
             <v-text-field 
             type="text" 
             label="Beneficiary name"
             :rules="nameRule"        
             v-model="transaction.name">
             </v-text-field>
+             <!-- AMOUNT -->
             <v-text-field 
             type="number" 
             label="Amount"
             :rules="amountRule"
             v-model="transaction.amount">
             </v-text-field>
+             <!-- TRANSACTION TYPE -->
             <v-select
             label="Transaction Type"
             v-model="transaction.category"
@@ -27,6 +30,7 @@
             </v-select>
             <v-btn text color="deep-purple accent-4" @click="addTransaction">Add</v-btn>
         </v-form>
+        <!-- SNACKBAR -->
         <v-snackbar
         color="primary"
         v-model="snackbar"

@@ -9,6 +9,7 @@
                 Do you want to reset all the transaction?
             </v-card-title>
             <v-card-actions>  
+                <!-- CONFIRMATION DIALOG -->
                 <v-dialog v-model="dialog" persistent max-width="500">
                     <template v-slot:activator="{ on, attrs }">
                         <v-btn
@@ -33,6 +34,7 @@
                     </v-dialog>
             </v-card-actions>
         </v-card>
+        <!-- NO TRANSACTION FOUND -->
         <v-card
         v-if="!isDataExist()"
         max-width="600px"

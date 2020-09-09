@@ -2,6 +2,7 @@
     <v-card
     max-width="90%"
     class="mx-auto">
+        <!-- TRANSACTION DATA-TABLE -->
         <v-simple-table 
         height=300
         v-if="isDataExist()">
@@ -48,6 +49,7 @@
                 </tbody>
             </template>        
         </v-simple-table>
+        <!-- NO TRANSACTION FOUND -->
         <v-card-title v-if="!isDataExist()">No transaction found.</v-card-title>
     </v-card>
 </template>
