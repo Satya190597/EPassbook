@@ -27,6 +27,21 @@
             </v-select>
             <v-btn text color="deep-purple accent-4" @click="addTransaction">Add</v-btn>
         </v-form>
+        <v-snackbar
+        color="primary"
+        v-model="snackbar"
+        :timeout="timeout">
+            {{ text }}
+            <template v-slot:action="{ attrs }">
+                <v-btn
+                color="white"
+                text
+                v-bind="attrs"
+                @click="snackbar = false">
+                    Close
+                </v-btn>
+            </template>
+        </v-snackbar>
     </v-card>
 </template>
 <script>
@@ -42,7 +57,9 @@ export default {
                 category: 'Credit',
                 active: true
             },
-            categories : ['Credit','Debit'],            
+            categories : ['Credit','Debit'], 
+            text: 'Transaction added successfully.',
+            snackbar:false         
         }
     },
     computed: {
@@ -60,6 +77,7 @@ export default {
                 this.$store.dispatch('add',this.transaction)
                 this.reset()
                 this.$refs.form.resetValidation()
+                this.snackbar = true
             }         
         },
         reset: function() {

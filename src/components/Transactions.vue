@@ -26,7 +26,7 @@
                         <td>
                             <v-btn 
                             text 
-                            color="error"
+                            color="deep-purple accent-4"
                             v-if="element.active" @click="cancleTransaction(element)">
                                 Cancel Transaction
                             </v-btn>
